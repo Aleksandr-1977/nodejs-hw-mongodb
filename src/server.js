@@ -33,7 +33,8 @@ export const setupServer = () => {
         return;
       }
       res.status(200).json({
-        data: contact,
+        message: 'Successfully found contact with id {contactId}!',
+        data: { contact },
       });
     } catch (err) {
       next(err);
