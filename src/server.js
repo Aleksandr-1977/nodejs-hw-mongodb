@@ -25,33 +25,40 @@ export const setupServer = () => {
     res.status(200).json({ data: contacts });
   });
   app.get('/contacts/:contactId', async (req, res, next) => {
-    const { contactId } = req.params;
-    const contact = await getContactById(contactId);
-    if (!contact) {
-      res.status(404).json({ message: 'Contact not found' });
-      return;
+    try {
+      const { contactId } = req.params;
+      const contact = await getContactById(contactId);
+      if (!contact) {
+        res.status(404).json({ message: 'Contact not found' });
+        return;
+      }
+      res.status(200).json({
+        data: contact,
+      });
+    } catch (err) {
+      next(err);
     }
-    res.status(200).json({
-      data: contact,
-    });
-  });
-  app.get('/', (req, res) => {
-    res.json({
-      message: 'Hello world!',
-    });
   });
 
   app.use((req, res, next) => {
-    res.status(404).json({
-      message: 'Not found',
-    });
+    try {
+      res.status(404).json({
+        message: 'Not found',
+      });
+    } catch (err) {
+      next(err);
+    }
   });
 
   app.use((err, req, res, next) => {
-    res.status(500).json({
-      message: 'Something went wrong',
-      error: err.message,
-    });
+    try {
+      res.status(500).json({
+        message: 'Something went wrong',
+        error: err.message,
+      });
+    } catch (err) {
+      next(err);
+    }
   });
 
   app.listen(PORT, () => {
