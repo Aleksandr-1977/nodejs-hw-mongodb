@@ -22,7 +22,11 @@ export const setupServer = () => {
   );
   app.get('/contacts', async (req, res) => {
     const contacts = await getAllContacts();
-    res.status(200).json({ data: contacts });
+    res.status(200).json({
+      status: 200,
+      message: 'Successfully found contacts!',
+      data: contacts,
+    });
   });
   app.get('/contacts/:contactId', async (req, res, next) => {
     try {
@@ -33,6 +37,7 @@ export const setupServer = () => {
         return;
       }
       res.status(200).json({
+        status: 200,
         message: `Successfully found contact with id ${contactId}!`,
         data: { contact },
       });
@@ -44,7 +49,7 @@ export const setupServer = () => {
   app.use((req, res, next) => {
     try {
       res.status(404).json({
-        message: 'Not found',
+        message: 'Not found this contact',
       });
     } catch (err) {
       next(err);
