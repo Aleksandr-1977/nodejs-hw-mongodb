@@ -11,3 +11,4 @@ Node HW-2
 - npm install dotenv
 - npm install mongodb
 - npm install mongoose
+- npm install http-errors
