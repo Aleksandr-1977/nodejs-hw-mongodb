@@ -1,6 +1,7 @@
 {
   "name": "nodejs-hw-mongodb",
   "version": "1.0.0",
+  "type": "module",
   "description": "Node HW-2",
   "main": "index.js",
   "dependencies": {
