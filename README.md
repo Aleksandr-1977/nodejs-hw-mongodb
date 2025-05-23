@@ -12,3 +12,4 @@ Node HW-2
 - npm install mongodb
 - npm install mongoose
 - npm install http-errors
+- npm i joi
