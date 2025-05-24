@@ -32,7 +32,6 @@ router.post(
   '/contacts',
   jsonParser,
   validateBody(createContactSchema),
-  jsonParser,
   ctrlWrapper(createContactsController),
 );
 router.delete(
@@ -43,15 +42,15 @@ router.delete(
 router.put(
   '/contacts/:contactId',
   isValidId,
-  validateBody(createContactSchema),
   jsonParser,
+  validateBody(createContactSchema),
   ctrlWrapper(upsertContactController),
 );
 router.patch(
   '/contacts/:contactId',
   isValidId,
-  validateBody(updateContactSchema),
   jsonParser,
+  validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );
 export default router;
