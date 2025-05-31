@@ -31,12 +31,12 @@ export const getContactByIdController = async (req, res, next) => {
   const { contactId } = req.params;
   const contact = await getContactById(contactId);
   if (!contact) {
-    next(createHttpError(404, 'Contact not found'));
+    next(createHttpError(404, 'Контакт не найден'));
     return;
   }
   res.status(200).send({
     status: 200,
-    message: `Successfully found contact with id ${contactId}!`,
+    message: `Контакт с id ${contactId} успешно найден!`,
     data: contact,
   });
 };
@@ -44,7 +44,7 @@ export const createContactsController = async (req, res) => {
   const contact = await createContact(req.body);
   res.status(201).json({
     status: 201,
-    message: `Successfully created a contact!`,
+    message: `Контакт успешно создан!`,
     data: contact,
   });
 };
@@ -53,7 +53,7 @@ export const deleteContactController = async (req, res, next) => {
   const contact = await deleteContact(contactId);
 
   if (!contact) {
-    next(createHttpError(404, 'Contact not found'));
+    next(createHttpError(404, 'Контакт не найден'));
     return;
   }
   res.status(204).send();
@@ -64,13 +64,13 @@ export const upsertContactController = async (req, res, next) => {
     upsert: true,
   });
   if (!result) {
-    next(createHttpError(404, 'Contact not found'));
+    next(createHttpError(404, 'Контакт не найден'));
     return;
   }
   const status = result.isNew ? 201 : 200;
   res.status(status).json({
     status,
-    message: `Successfully upserted a contact!`,
+    message: `Контакт успешно добавлен!`,
     data: result.contact,
   });
 };
@@ -78,12 +78,12 @@ export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
   const result = await updateContact(contactId, req.body);
   if (!result) {
-    next(createHttpError(404, 'Contact not found'));
+    next(createHttpError(404, 'Контакт не найден'));
     return;
   }
   res.json({
     status: 200,
-    message: `Successfully patched a contact!`,
+    message: `Контакт успешно обновлен!`,
     data: result.contact,
   });
 };

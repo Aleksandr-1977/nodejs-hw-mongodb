@@ -13,3 +13,5 @@ Node HW-2
 - npm install mongoose
 - npm install http-errors
 - npm i joi
+- npm i bcrypt
+- npm i cookie-parser
