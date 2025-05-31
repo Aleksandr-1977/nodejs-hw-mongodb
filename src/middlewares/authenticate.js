@@ -22,7 +22,7 @@ export const authenticate = async (req, res, next) => {
   const isAccessTokenExpired =
     new Date() > new Date(session.accessTokenValidUntil);
   if (isAccessTokenExpired) {
-    next(createHttpError(401, 'Срок действия token истек'));
+    return next(createHttpError(401, 'Срок действия token истек'));
   }
   const user = await UsersCollection.findById(session.userId);
   if (!user) {
