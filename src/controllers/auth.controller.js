@@ -42,11 +42,11 @@ export const logoutUserController = async (req, res) => {
   res.clearCookie('sessionId');
   res.clearCookie('refreshToken');
 
-  // res.status(204).send();
-  res.json({
-    status: 204,
-    message: 'Пользователь успешно вышел из системы!',
-  });
+  res.status(204).send();
+  // res.json({
+  //   status: 204,
+  //   message: 'Пользователь успешно вышел из системы!',
+  // });
 };
 const setupSession = (res, session) => {
   res.cookie('refreshToken', session.refreshToken, {
