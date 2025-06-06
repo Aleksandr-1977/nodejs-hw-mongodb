@@ -85,7 +85,9 @@ export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
 };
 
 export const requestResetToken = async (email) => {
+  console.log('Received email:', email);
   const user = await UsersCollection.findOne({ email });
+  console.log('Found user:', user);
   if (!user) {
     throw createHttpError(404, 'Пользователь с таким email не зарегестрирован');
   }
