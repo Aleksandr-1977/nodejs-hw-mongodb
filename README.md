@@ -15,3 +15,6 @@ Node HW-2
 - npm i joi
 - npm i bcrypt
 - npm i cookie-parser
+- npm install nodemailer
+- npm i jsonwebtoken
+- npm i handlebars
