@@ -18,3 +18,5 @@ Node HW-2
 - npm install nodemailer
 - npm i jsonwebtoken
 - npm i handlebars
+- npm i multer
+- npm install cloudinary

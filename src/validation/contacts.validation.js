@@ -35,7 +35,9 @@ export const createContactSchema = Joi.object({
       'any.only': 'Должно быть одним из: work, home, personal',
       'any.required': 'Поле обязательное',
     }),
+  photo: Joi.string,
 });
+
 export const updateContactSchema = Joi.object({
   name: Joi.string().min(3).max(20).messages({
     'string.base': 'Должно быть текстом',
@@ -63,4 +65,5 @@ export const updateContactSchema = Joi.object({
   contactType: Joi.string().valid('work', 'home', 'personal').messages({
     'any.only': 'Должно быть одним из: work, home, personal',
   }),
+  photo: Joi.string,
 });
