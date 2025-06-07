@@ -10,7 +10,14 @@ cloudinary.v2.config({
 });
 
 export const saveFileToCloudinary = async (file) => {
-  const response = await cloudinary.v2.uploader.upload(file.path);
-  await fs.unlink(file.path);
-  return response.secure_url;
+  try {
+    const response = await cloudinary.v2.uploader.upload(file.path, {
+      folder: 'contacts',
+    });
+    await fs.unlink(file.path);
+    return response.secure_url;
+  } catch (error) {
+    console.error('Cloudinary upload error:', error);
+    throw error;
+  }
 };
