@@ -20,5 +20,4 @@ Node HW-2
 - npm i handlebars
 - npm i multer
 - npm install cloudinary
-- что-то добавил
 -
