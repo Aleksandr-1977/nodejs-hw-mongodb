@@ -1,0 +1,46 @@
+# tags - тег, до якого цей ендпоінт належить (Contacts)
+# summary - короткий опис ендпоінта
+# operationId - унікальний ідентифікатор операції
+# description - більш розгорнутий опис
+# security - зазначте, що ми використовуємо авторизацію за допомогою Bearer токену
+# parameters - параметри запиту (для цього ендпоінту - параметр шляху :contactId)
+# responses - варіанти відповіді
+# 200
+# 404
+tags:
+  - Contacts
+summary: Get contact by id
+operationId: getContact
+description: 'Get contact by id'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: '6845ded857785e9a8d0edd07'
+responses:
+  '200':
+    description: 'Get contact by id'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Контакт с id 6845ded857785e9a8d0edd07 успешно найден!
+            data:
+              type: object
+              $ref: '../../../components/schemas/contact.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'

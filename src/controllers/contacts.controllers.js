@@ -26,7 +26,7 @@ export const getContactsController = async (req, res) => {
   });
   res.status(200).send({
     status: 200,
-    message: 'Successfully found contact!',
+    message: 'Контакты успешно найдены!',
     data: contacts,
   });
 };
